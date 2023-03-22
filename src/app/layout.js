@@ -14,7 +14,10 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="en" className={poppins.className} translate='no'>
+      <head>
+        <meta name="google" content="notranslate"  />
+      </head>
       <body>{children}</body>
     </html>
   )

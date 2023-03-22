@@ -1,4 +1,4 @@
-import Image from 'next/image'
+// import Image from 'next/image'
 import styles from '../main.module.css'
 
 function chats() {
@@ -11,7 +11,7 @@ function chats() {
             <li>Calls</li>
         </ul>
         <div className={styles.chatBox}>
-            <Image />
+            {/* <Image /> */}
             <div>
                 <h4>Robert Fox</h4>
                 <p>hey what's going on?</p>
