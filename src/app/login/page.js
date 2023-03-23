@@ -69,7 +69,8 @@ function Login() {
         createUserWithEmailAndPassword( auth, email, password)
         .then((userCredential) => {
           // Signed in 
-          const user = userCredential.user;
+          let user = userCredential.user;
+          user = user
           toaster('You have sussefully logged in 💥')
           setTimeout(() => {
             redirect()
@@ -105,7 +106,9 @@ function Login() {
   });
     }
 
-  
+  // User variable
+
+  let user; 
 
 
 
@@ -124,7 +127,7 @@ function Login() {
           theme="colored"
         />
         <Link href='/' className={styles.backbtn}> 👈 Back</Link>
-        <h3 className={styles.loginH3}>Hello Welcome Back</h3>
+        <h3 className={styles.loginH3}>Hello Welcome, {user ? 'Back' : 'Create and account😀'}</h3>
         <p>Happy to see you again, to use your account plese login first.</p>
         <div className={styles.inputDiv}>
             <label htmlFor="email">Email Address:</label>

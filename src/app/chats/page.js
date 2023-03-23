@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useRouter } from 'next/navigation'
 
 
-function chats() {
+function Chats() {
 
     const auth = getAuth(app)
     let router = useRouter()
