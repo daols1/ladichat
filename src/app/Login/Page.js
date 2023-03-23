@@ -42,7 +42,7 @@ function login() {
     // Redirect on login
 
     const redirect = () => {
-        router.push('../chats')
+        router.push('../Chats')
     }
 
     // Alert Function 
