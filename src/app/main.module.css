@@ -94,6 +94,20 @@
   align-items: space-evenly;
 }
 
+/* Main menu bottom */
+
+.menu {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  bottom: 0;
+  border-radius: 20px 20px 0px 0px;
+  height: 12vh;
+  display: flex;
+  text-align: center;
+  box-shadow: 1px 1px 10px gray;
+}
+
 /* Alert Box */
 
 .alertBox {

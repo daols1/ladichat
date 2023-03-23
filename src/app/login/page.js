@@ -5,27 +5,15 @@ import styles from '../main.module.css'
 import {FcGoogle} from 'react-icons/fc'
 import {AiFillApple} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
-import { useState, useEffect } from "react"
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from "firebase/auth"
-import { app } from "../../../config/firebase"
+import { useState } from "react"
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+import { app, provider } from "../../../config/firebase"
 import { useRouter } from 'next/navigation'
 
 
 
 function Login() {
     
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-              redirect()
-            const uid = user.uid;
-            // ...
-          } else {
-            // User is signed out
-            // ...
-          }
-        });
-    }, )
     // State initialization
 
     const [email, setEmail] = useState('')
@@ -80,6 +68,28 @@ function Login() {
         });
     }
 
+    const googleHandler = () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+  });
+    }
+
     
 
 
@@ -101,7 +111,7 @@ function Login() {
         <button className={styles.btn} onClick={() => clickHandler()} >Submit</button>
         <p>or Login with</p>
         <div>
-            <FcGoogle size={30} />
+            <FcGoogle size={30} onClick={() => googleHandler()} />
             <AiFillApple size={30} />
             <BsFacebook size={30} color='blue' />
         </div>

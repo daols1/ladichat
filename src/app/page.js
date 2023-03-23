@@ -1,10 +1,45 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './main.module.css'
 import getstarted from '../../public/getstarted/getstarted.png'
 import Link from 'next/link'
+import { useEffect } from "react"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { app } from '../../config/firebase'
+import { useRouter } from 'next/navigation'
+
+
 
 
 export default function Home() {
+
+
+  // Redirect loggedin user logic
+
+
+  let router = useRouter()
+  const redirect = () => {
+    router.push('../chats')
+  }
+
+  const auth = getAuth(app)
+
+  useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+              redirect()
+            const uid = user.uid;
+            // ...
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
+    }, )
+
+
+
   return (
     <div>
       {/* Get Started page */}
