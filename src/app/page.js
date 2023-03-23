@@ -16,7 +16,7 @@ export default function Home() {
         placeholder="blur" 
         alt='pic showing how good this app'
         />
-        <Link href='./Login' className={styles.btn} >Get Started</Link>
+        <Link href='./login' className={styles.btn} >Get Started</Link>
       </div>
     </div>
   )

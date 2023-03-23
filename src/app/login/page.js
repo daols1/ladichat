@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'
 
 
 
-function login() {
+function Login() {
     
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -42,7 +42,7 @@ function login() {
     // Redirect on login
 
     const redirect = () => {
-        router.push('../Chats')
+        router.push('../chats')
     }
 
     // Alert Function 
@@ -109,4 +109,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
