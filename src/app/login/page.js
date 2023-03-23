@@ -9,6 +9,8 @@ import { useState } from "react"
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { app, provider } from "../../../config/firebase"
 import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 
 
@@ -45,6 +47,16 @@ function Login() {
     //     )
     // }
 
+    // Toast fn passing in what you wanna display
+
+    // Toast fn passing in desired message.
+    const toaster = (msg) => {
+        toast.success(msg, {
+            autoClose:3000,
+            theme: "dark",
+          })
+    }
+
     // Firebase
 
     const auth = getAuth(app)
@@ -58,7 +70,10 @@ function Login() {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          redirect()
+          toaster('You have sussefully logged in 💥')
+          setTimeout(() => {
+            redirect()
+          }, 3000)
           // ...
         })
         .catch((error) => {
@@ -90,13 +105,24 @@ function Login() {
   });
     }
 
-    
-
+  
 
 
 
   return (
     <div className={styles.login}>
+        <ToastContainer 
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         <Link href='/' className={styles.backbtn}> 👈 Back</Link>
         <h3 className={styles.loginH3}>Hello Welcome Back</h3>
         <p>Happy to see you again, to use your account plese login first.</p>
