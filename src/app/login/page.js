@@ -5,10 +5,9 @@ import styles from '../main.module.css'
 import {FcGoogle} from 'react-icons/fc'
 import {AiFillApple} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
-import {IoArrowBackCircleOutline} from 'react-icons/io'
 import { useState, useEffect } from "react"
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged } from "firebase/auth"
-import { auth } from "../../../config/firebase"
+import { app } from "../../../config/firebase"
 import { useRouter } from 'next/navigation'
 
 
@@ -60,7 +59,7 @@ function login() {
 
     // Firebase
 
-    const auth = getAuth()
+    const auth = getAuth(app)
     
     const clickHandler = () => {
         console.log("Clicked the submit button")
