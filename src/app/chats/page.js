@@ -14,7 +14,7 @@ function chats() {
             {/* <Image /> */}
             <div>
                 <h4>Robert Fox</h4>
-                <p>hey what's going on?</p>
+                <p>hey whats going on?</p>
             </div>
             <p>15:43</p>
         </div>
