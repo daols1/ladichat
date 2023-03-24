@@ -17,6 +17,9 @@ function Chats() {
     const redirect = () => {
         router.push('/')
     }
+    const redirectChats = () => {
+        router.push('./chatview')
+    }
 
     // Toast fn passing in desired message.
     const toaster = (msg) => {
@@ -48,9 +51,9 @@ function Chats() {
             <li>Friends</li>
             <li>Calls</li>
         </ul>
-        <div className={styles.chatBox}>
+        <div className={styles.viewBox}>
             {/* <Image /> */}
-            <div>
+            <div onClick={() => redirectChats()}>
                 <h4>Robert Fox</h4>
                 <p>hey whats going on?</p>
             </div>

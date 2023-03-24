@@ -6,7 +6,12 @@ import {FcGoogle} from 'react-icons/fc'
 import {AiFillApple} from 'react-icons/ai'
 import {BsFacebook} from 'react-icons/bs'
 import { useState } from "react"
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+import { createUserWithEmailAndPassword,
+   getAuth, 
+   onAuthStateChanged, 
+   signInWithPopup, 
+   GoogleAuthProvider, 
+   signInWithEmailAndPassword } from "firebase/auth"
 import { app, provider } from "../../../config/firebase"
 import { useRouter } from 'next/navigation'
 import { ToastContainer, toast } from 'react-toastify';
@@ -35,20 +40,6 @@ function Login() {
         router.push('../chats')
     }
 
-    // Alert Function 
-
-    // const alertState = () => {
-    //     return(
-    //         <div className={styles.alertBoxOuter}>
-    //             <div className={styles.alertBox}>
-    //                 Nice you have succefully logged in 😀
-    //             </div>
-    //         </div>
-    //     )
-    // }
-
-    // Toast fn passing in what you wanna display
-
     // Toast fn passing in desired message.
     const toaster = (msg) => {
         toast.success(msg, {
@@ -70,7 +61,6 @@ function Login() {
         .then((userCredential) => {
           // Signed in 
           let user = userCredential.user;
-          user = user
           toaster('You have sussefully logged in 💥')
           setTimeout(() => {
             redirect()
@@ -106,9 +96,23 @@ function Login() {
   });
     }
 
-  // User variable
+    // Sign in
+    const signinHandler = () => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+          toaster('You have sussefully logged in 💥')
+          setTimeout(() => {
+            redirect()
+          }, 3000)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    }
 
-  let user; 
 
 
 
@@ -127,7 +131,7 @@ function Login() {
           theme="colored"
         />
         <Link href='/' className={styles.backbtn}> 👈 Back</Link>
-        <h3 className={styles.loginH3}>Hello Welcome, {user ? 'Back' : 'Create and account😀'}</h3>
+        <h3 className={styles.loginH3}>Hello Welcome, Login</h3>
         <p>Happy to see you again, to use your account plese login first.</p>
         <div className={styles.inputDiv}>
             <label htmlFor="email">Email Address:</label>

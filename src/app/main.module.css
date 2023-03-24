@@ -2,7 +2,8 @@
 
 .container,
 .login,
-.chats {
+.chats,
+.chatpage {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -94,6 +95,20 @@
   align-items: space-evenly;
 }
 
+.viewBox {
+  padding: 10px;
+  border: 1px #771f98 solid;
+  border-radius: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+}
+
+.viewBox > p {
+  justify-self: flex-end;
+}
+
 /* Main menu bottom */
 
 .menu {
@@ -125,4 +140,48 @@
   backdrop-filter: blur(3px);
   width: 100%;
   height: 100%;
+}
+
+/* User chat */
+
+.userCred {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+.sendbtn {
+  background: #771f98;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.inputChat {
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputBox {
+  border: none;
+  padding: 15px;
+}
+
+/* Chat box Styles */
+
+.chatBox {
+  padding: 10px;
+  border: 1px #771f98 solid;
+  border-radius: 10px;
 }
