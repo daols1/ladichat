@@ -3,7 +3,8 @@
 .container,
 .login,
 .chats,
-.chatpage {
+.chatpage,
+.settingsPage {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -176,6 +177,7 @@
 .inputBox {
   border: none;
   padding: 15px;
+  background: #fff;
 }
 
 /* Chat box Styles */
@@ -184,4 +186,7 @@
   padding: 10px;
   border: 1px #771f98 solid;
   border-radius: 10px;
+  position: absolute;
+  bottom: 12vh;
+  right: 20px;
 }
